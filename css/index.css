@@ -1,0 +1,5 @@
+th img,
+td img {
+    cursor: pointer;
+    width: 50%;
+}
