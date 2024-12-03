@@ -90,7 +90,7 @@ grid.addEventListener('click', function (event) {
 
     let clicked = event.target;
 
-    if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
+    if (clicked.nodeName === 'SECTION' || clicked.classList.contains('card') || clicked === previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
         return;
     }
 
