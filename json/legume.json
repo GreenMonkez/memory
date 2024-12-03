@@ -1,0 +1,26 @@
+[
+    {
+        "name": "pomme",
+        "img": "assets/memory-legume/1.svg"
+    },
+    {
+        "name": "banane",
+        "img": "assets/memory-legume/2.svg"
+    },
+    {
+        "name": "chou",
+        "img": "assets/memory-legume/3.svg"
+    },
+    {
+        "name": "cerise",
+        "img": "assets/memory-legume/4.svg"
+    },
+    {
+        "name": "piment",
+        "img": "assets/memory-legume/5.svg"
+    },
+    {
+        "name": "fraise",
+        "img": "assets/memory-legume/6.svg"
+    }
+]
