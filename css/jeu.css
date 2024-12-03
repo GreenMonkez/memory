@@ -31,8 +31,7 @@ body {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     margin: 5px;
-    margin-top: 75px;
-    margin-bottom: 75px;
+    margin-bottom: 150px;
 }
 
 .card,

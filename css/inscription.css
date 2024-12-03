@@ -1,0 +1,30 @@
+#nameError,
+#emailError,
+#passwordError,
+#passwordConfirmError {
+    color: firebrick;
+}
+
+.strong {
+    display: inline-block;
+    height: 5px;
+    width: 50px;
+    background-color: green;
+    text-align: center;
+}
+
+.mid {
+    display: inline-block;
+    height: 5px;
+    width: 50px;
+    background-color: yellow;
+    text-align: center;
+}
+
+.weak {
+    display: inline-block;
+    height: 5px;
+    width: 50px;
+    background-color: red;
+    text-align: center;
+}
