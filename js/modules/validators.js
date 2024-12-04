@@ -3,9 +3,33 @@ export function nameValidator(name) {
     return nameRegex.test(name);
 }
 
+export function nameUniqueValidator(name) {
+    const users = JSON.parse(localStorage.getItem("userData"));
+    const result = users.find(user => user.name == name);
+
+    if (result == null) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 export function emailValidator(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+export function emailUniqueValidator(email) {
+    const users = JSON.parse(localStorage.getItem("userData"));
+    const result = users.find(user => user.email == email);
+
+    if (result == null) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 export function passwordValidator(password) {

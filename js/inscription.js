@@ -1,6 +1,8 @@
 import {
     nameValidator,
+    nameUniqueValidator,
     emailValidator,
+    emailUniqueValidator,
     passwordValidator,
     passwordStrongValidator,
     passwordMidValidator1,
@@ -26,8 +28,7 @@ function handleSubmit(event) {
     const formData = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        passwordConfirm: document.getElementById('passwordConfirm').value,
+        password: document.getElementById('password').value
     };
 
     let hasError = false;
@@ -37,8 +38,18 @@ function handleSubmit(event) {
         hasError = true;
     }
 
+    if (!nameUniqueValidator(formData.name)) {
+        displayFieldError('name', "Nom indisponible");
+        hasError = true;
+    }
+
     if (!emailValidator(formData.email)) {
         displayFieldError('email', "Email invalide");
+        hasError = true;
+    }
+
+    if (!emailUniqueValidator(formData.email)) {
+        displayFieldError('email', "Email indisponible");
         hasError = true;
     }
 
@@ -47,7 +58,7 @@ function handleSubmit(event) {
         hasError = true;
     }
 
-    if (formData.password !== formData.passwordConfirm) {
+    if (formData.password !== document.getElementById('passwordConfirm').value) {
         displayFieldError('passwordConfirm', "Le mot de passe ne correspond pas");
         hasError = true;
     }
