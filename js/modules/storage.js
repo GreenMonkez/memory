@@ -5,3 +5,7 @@ export function saveToLocalStorage(userData) {
 
     localStorage.setItem('userData', JSON.stringify(users));
 }
+
+export function saveToLocalStorageActive(email) {
+    localStorage.setItem('activeUser', JSON.stringify(email));
+}

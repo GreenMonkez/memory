@@ -4,7 +4,7 @@ export function nameValidator(name) {
 }
 
 export function nameUniqueValidator(name) {
-    const users = JSON.parse(localStorage.getItem("userData"));
+    const users = JSON.parse(localStorage.getItem("userData")) ?? [];
     const result = users.find(user => user.name === name);
 
     if (result == null) {
@@ -21,7 +21,7 @@ export function emailValidator(email) {
 }
 
 export function emailUniqueValidator(email) {
-    const users = JSON.parse(localStorage.getItem("userData"));
+    const users = JSON.parse(localStorage.getItem("userData")) ?? [];
     const result = users.find(user => user.email === email);
 
     if (result == null) {
@@ -53,7 +53,7 @@ export function passwordMidValidator2(password) {
 }
 
 export function matchValidator(email, password) {
-    const users = JSON.parse(localStorage.getItem("userData"));
+    const users = JSON.parse(localStorage.getItem("userData")) ?? [];
     const user = users.find(user => user.email === email) ?? [];
     const userPassword = user['password'];
 
