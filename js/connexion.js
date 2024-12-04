@@ -1,7 +1,7 @@
 import {
     matchValidator
 } from './modules/validators.js';
-import { saveToLocalStorageActive } from './modules/storage.js';
+import { saveToSessionStorage } from './modules/storage.js';
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -22,7 +22,7 @@ function handleSubmit(event) {
         return;
     }
 
-    saveToLocalStorageActive(formData.email);
+    saveToSessionStorage(formData.email);
     alert("L'email " + formData.email + " est connecté");
     location.href = 'profil.html'
 }

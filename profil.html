@@ -33,7 +33,7 @@
     <div class="container">
         <main>
             <h1>ENI - MEMORY - Profil</h1>
-            <form>
+            <form id="userForm">
                 <h2>Profil</h2>
                 <img src="assets/3899616.png" alt="Profil">
                 <div class="mb-3">
@@ -49,17 +49,21 @@
                 <div class="mb-3">
                     <label for="choice" class="form-label">Choix du memory</label>
                     <select class="form-select" aria-label="Default select example" id="choice">
-                        <option value="" selected>Animaux animés</option>
-                        <option value="">Animaux</option>
-                        <option value="">Légumes</option>
-                        <option value="">Animaux Domestiques</option>
+                        <option value="legume">Légume</option>
+                        <option value="alphabet">Alphabet</option>
+                        <option value="animaux">Animaux</option>
+                        <option value="animauxAnimes">Animaux Animés</option>
+                        <option value="animauxDomestiques">Animaux Domestiques</option>
+                        <option value="chiens">Chiens</option>
+                        <option value="dinosaures">Dinosaures</option>
+                        <option value="dinosauresAvecNom">Dinosaures Avec Nom</option>
                     </select>
                 </div>
-                <img src="assets/memory_detail.png" alt="Sprite">
+                <img src="assets/memory-legume/memory_detail.png" alt="Sprite" id="imgId">
                 <div class="mb-3">
                     <label for="size" class="form-label">Taille du memory</label>
                     <select class="form-select" aria-label="Default select example" id="size">
-                        <option value="" selected>4*3</option>
+                        <option value="">4*3</option>
                         <option value=""></option>
                         <option value=""></option>
                         <option value=""></option>
@@ -90,7 +94,7 @@
             </table>
         </main>
     </div>
-    <script src="js/profil.js"></script>
+    <script type="module" src="js/profil.js"></script>
 </body>
 
 </html>

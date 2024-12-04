@@ -6,6 +6,12 @@ export function saveToLocalStorage(userData) {
     localStorage.setItem('userData', JSON.stringify(users));
 }
 
-export function saveToLocalStorageActive(email) {
-    localStorage.setItem('activeUser', JSON.stringify(email));
+export function saveToSessionStorage(email) {
+    sessionStorage.setItem('activeUser', JSON.stringify(email));
+}
+
+export function updateLocalStorage(users, user) {
+
+    users.push(user);
+    localStorage.setItem('userData', JSON.stringify(users));
 }
