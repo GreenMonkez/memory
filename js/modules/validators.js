@@ -5,7 +5,7 @@ export function nameValidator(name) {
 
 export function nameUniqueValidator(name) {
     const users = JSON.parse(localStorage.getItem("userData"));
-    const result = users.find(user => user.name == name);
+    const result = users.find(user => user.name === name);
 
     if (result == null) {
         return true;
@@ -22,7 +22,7 @@ export function emailValidator(email) {
 
 export function emailUniqueValidator(email) {
     const users = JSON.parse(localStorage.getItem("userData"));
-    const result = users.find(user => user.email == email);
+    const result = users.find(user => user.email === email);
 
     if (result == null) {
         return true;
@@ -52,5 +52,15 @@ export function passwordMidValidator2(password) {
     return passwordRegexMid2.test(password);
 }
 
+export function matchValidator(email, password) {
+    const users = JSON.parse(localStorage.getItem("userData"));
+    const user = users.find(user => user.email === email) ?? [];
+    const userPassword = user['password'];
 
-
+    if (userPassword == password) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}

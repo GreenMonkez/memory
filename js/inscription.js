@@ -69,7 +69,7 @@ function handleSubmit(event) {
 
     saveToLocalStorage(formData);
     alert('Inscription réussie !');
-    event.currentTarget.reset();
+    location.href = 'connexion.html'
 }
 
 document.getElementById('userForm').addEventListener('submit', handleSubmit);
