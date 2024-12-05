@@ -64,6 +64,10 @@ function handleSubmit(event) {
     }
 
     if (hasError) {
+        document.getElementById('myDiv').classList.add('error');
+        setTimeout(() => {
+            document.getElementById('myDiv').classList.remove('error');
+        }, 500);
         return;
     }
 

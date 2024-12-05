@@ -1,4 +1,4 @@
-let cardsArray = [{
+const cardsArray = [{
     "name": "pomme",
     "img": "assets/memory-legume/1.svg"
 },
@@ -35,7 +35,7 @@ let firstGuess = '';
 let secondGuess = '';
 let count = 0;
 let previousTarget = null;
-let delay = 1200;
+let delay = 1500;
 
 let game = document.getElementById('game');
 let grid = document.createElement('section');

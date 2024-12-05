@@ -9,41 +9,49 @@ document.getElementById('email').value = userEmail;
 document.getElementById('name').readOnly = true;
 document.getElementById('email').readOnly = true;
 
-let memoryArray = [{
+const memoryArray = [{
     "name": "alphabet",
-    "img": "assets/alphabet-scrabble/memory_detail_scrabble.png"
+    "img": "assets/alphabet-scrabble/memory_detail_scrabble.png",
+    "nb": "26"
 },
 {
     "name": "animaux",
-    "img": "assets/animaux/memory_detail_animaux.png"
+    "img": "assets/animaux/memory_detail_animaux.png",
+    "nb": "28"
 },
 {
     "name": "animauxAnimes",
-    "img": "assets/animauxAnimes/memory_detail_animaux_animes.png"
+    "img": "assets/animauxAnimes/memory_detail_animaux_animes.png",
+    "nb": "8"
 },
 {
     "name": "animauxDomestiques",
-    "img": "assets/animauxdomestiques/memory_detail_animaux_domestiques.png"
+    "img": "assets/animauxdomestiques/memory_detail_animaux_domestiques.png",
+    "nb": "10"
 },
 {
     "name": "chiens",
-    "img": "assets/chiens/memory_details_chiens.png"
+    "img": "assets/chiens/memory_details_chiens.png",
+    "nb": "23"
 },
 {
     "name": "dinosaures",
-    "img": "assets/dinosaures/memory_detail_dinosaures.png"
+    "img": "assets/dinosaures/memory_detail_dinosaures.png",
+    "nb": "10"
 },
 {
     "name": "dinosauresAvecNom",
-    "img": "assets/dinosauresAvecNom/memory_details_dinosaures_avec_nom.png"
+    "img": "assets/dinosauresAvecNom/memory_details_dinosaures_avec_nom.png",
+    "nb": "10"
 },
 {
     "name": "legume",
-    "img": "assets/memory-legume/memory_detail.png"
+    "img": "assets/memory-legume/memory_detail.png",
+    "nb": "6"
 }];
 
 function changeImg(event) {
-    let memoryName = event.currentTarget.value;
+    const memoryName = event.currentTarget.value;
     const memory = memoryArray.find(memory => memory.name === memoryName);
     const memorySrc = memory['img'];
     document.getElementById("imgId").src = memorySrc;
@@ -59,10 +67,22 @@ function handleSubmit(event) {
         return;
     }
 
-    let index = users.findIndex(user => user.email === userEmail);
+    const index = users.findIndex(user => user.email === userEmail);
     users.splice(index, 1);
-    let memoryName = document.getElementById('choice').value;
+
+    const memoryName = document.getElementById('choice').value;
     Object.assign(user, { "choice": memoryName });
+
+    const memory = memoryArray.find(memory => memory.name === memoryName);
+    const memoryNb = parseInt(memory['nb']);
+
+    const memorySize = parseInt(document.getElementById('size').value);
+    Object.assign(user, { "size": memorySize });
+
+    if (memorySize > memoryNb) {
+        alert('La taille choisie est trop grande pour ce memory');
+        return;
+    }
 
     updateLocalStorage(users, user);
     alert('Profil mis à jour');
