@@ -80,3 +80,11 @@
         transform: translate(1px, -2px) rotate(-1deg);
     }
 }
+
+.errorImg {
+    background: url('../assets/error.svg') no-repeat right;
+}
+
+.checkImg {
+    background: url('../assets/check.svg') no-repeat right;
+}

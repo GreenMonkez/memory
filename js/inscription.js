@@ -19,11 +19,16 @@ import {
     displayMid,
     displayStrong
 } from './modules/strenghtDisplay.js';
+import {
+    displayImg,
+    clearImg,
+} from './modules/imgDisplay.js';
 
 function handleSubmit(event) {
     event.preventDefault();
 
     clearFieldErrors();
+    clearImg();
 
     const formData = {
         name: document.getElementById('name').value,
@@ -32,35 +37,69 @@ function handleSubmit(event) {
     };
 
     let hasError = false;
+    let hasNameError = false;
+    let hasEmailError = false;
+    let hasPasswordError = false;
+    let hasPasswordConfirmError = false;
 
     if (!nameValidator(formData.name)) {
         displayFieldError('name', "Nom invalide");
         hasError = true;
+        hasNameError = true;
     }
 
     if (!nameUniqueValidator(formData.name)) {
         displayFieldError('name', "Nom indisponible");
         hasError = true;
+        hasNameError = true;
     }
 
     if (!emailValidator(formData.email)) {
         displayFieldError('email', "Email invalide");
         hasError = true;
+        hasEmailError = true;
     }
 
     if (!emailUniqueValidator(formData.email)) {
         displayFieldError('email', "Email indisponible");
         hasError = true;
+        hasEmailError = true;
     }
-
     if (!passwordValidator(formData.password)) {
         displayFieldError('password', "Le mot de passe doit contenir au moins 6 caractères, un chiffre et un caractère spécial");
         hasError = true;
+        hasPasswordError = true;
     }
 
-    if (formData.password !== document.getElementById('passwordConfirm').value) {
+    let passwordConfirm = document.getElementById('passwordConfirm').value;
+    if (formData.password !== passwordConfirm || passwordConfirm === "") {
         displayFieldError('passwordConfirm', "Le mot de passe ne correspond pas");
         hasError = true;
+        hasPasswordConfirmError = true;
+    }
+
+    if (hasNameError) {
+        displayImg('name', 'errorImg');
+    } else {
+        displayImg('name', 'checkImg');
+    }
+
+    if (hasEmailError) {
+        displayImg('email', 'errorImg');
+    } else {
+        displayImg('email', 'checkImg');
+    }
+
+    if (hasPasswordError) {
+        displayImg('password', 'errorImg');
+    } else {
+        displayImg('password', 'checkImg');
+    }
+
+    if (hasPasswordConfirmError) {
+        displayImg('passwordConfirm', 'errorImg');
+    } else {
+        displayImg('passwordConfirm', 'checkImg');
     }
 
     if (hasError) {
@@ -80,6 +119,7 @@ document.getElementById('userForm').addEventListener('submit', handleSubmit);
 
 function clearAll() {
     clearFieldErrors();
+    clearImg();
     clearStrenght();
 }
 
