@@ -1,14 +1,5 @@
 import { updateLocalStorage } from "./modules/storage.js";
 
-const users = JSON.parse(localStorage.getItem("userData")) ?? [];
-const userEmail = JSON.parse(sessionStorage.getItem("activeUser")) ?? null;
-const user = users.find(user => user.email === userEmail) ?? [];
-const userName = user['name'] ?? null;
-document.getElementById('name').value = userName;
-document.getElementById('email').value = userEmail;
-document.getElementById('name').readOnly = true;
-document.getElementById('email').readOnly = true;
-
 const memoryArray = [{
     "name": "alphabet",
     "img": "assets/alphabet-scrabble/memory_detail_scrabble.png",
@@ -50,6 +41,19 @@ const memoryArray = [{
     "nb": "6"
 }];
 
+// Remplie les input
+
+const users = JSON.parse(localStorage.getItem("userData")) ?? [];
+const userEmail = JSON.parse(sessionStorage.getItem("activeUser")) ?? null;
+const user = users.find(user => user.email === userEmail) ?? [];
+const userName = user['name'] ?? null;
+document.getElementById('name').value = userName;
+document.getElementById('email').value = userEmail;
+document.getElementById('name').readOnly = true;
+document.getElementById('email').readOnly = true;
+
+// Logique changement image (event change)
+
 function changeImg(event) {
     const memoryName = event.currentTarget.value;
     const memory = memoryArray.find(memory => memory.name === memoryName);
@@ -58,6 +62,8 @@ function changeImg(event) {
 }
 
 document.getElementById("choice").addEventListener('change', changeImg)
+
+// Logique mise à jour utilisateur (event submit)
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -91,10 +97,11 @@ function handleSubmit(event) {
 
 document.getElementById('userForm').addEventListener('submit', handleSubmit);
 
+// Affiche le tableau de scores de l'utilisateur
+
 const scores = JSON.parse(localStorage.getItem("scoreData")) ?? [];
 const userScores = scores.filter(user => user.email === userEmail) ?? [];
 userScores.sort((a, b) => a.score - b.score);
-
 
 function createTable() {
 

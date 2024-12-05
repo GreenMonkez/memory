@@ -1,3 +1,5 @@
+// Renvoie la date en dd/mm/yyyy
+
 export function getDate() {
     const today = new Date();
     let day = today.getDate();

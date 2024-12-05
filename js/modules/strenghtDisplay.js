@@ -1,8 +1,12 @@
+// Affiche la barre " forte "
+
 export function displayStrong() {
     document.getElementById('passwordStrenghtStrong').classList.add('strong');
     document.getElementById('passwordStrenghtStrong').innerText = "fort"
     displayMid();
 }
+
+// Affiche la barre " moyenne "
 
 export function displayMid() {
     document.getElementById('passwordStrenghtMid').classList.add('mid');
@@ -10,10 +14,14 @@ export function displayMid() {
     displayWeak();
 }
 
+// Affiche la barre " faible "
+
 export function displayWeak() {
     document.getElementById('passwordStrenghtWeak').classList.add('weak');
     document.getElementById('passwordStrenghtWeak').innerText = "faible"
 }
+
+// Enlève les barres
 
 export function clearStrenght() {
     document.getElementById('passwordStrenghtStrong').classList.remove('strong');

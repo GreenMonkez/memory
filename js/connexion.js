@@ -3,6 +3,8 @@ import {
 } from './modules/validators.js';
 import { saveToSessionStorage } from './modules/storage.js';
 
+// Logique de la connexion (event submit)
+
 function handleSubmit(event) {
     event.preventDefault();
 

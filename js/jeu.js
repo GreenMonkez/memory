@@ -514,6 +514,8 @@ const memoryName = {
     "dinosauresAvecNom": "Dinosaures Avec Nom"
 };
 
+// Affiche le tableau de scores global
+
 const scores = JSON.parse(localStorage.getItem("scoreData")) ?? [];
 scores.sort((a, b) => a.score - b.score);
 scores.splice(5, 99)
@@ -542,6 +544,8 @@ function createTable() {
 }
 
 createTable();
+
+// Crée le plateau de jeu
 
 const users = JSON.parse(localStorage.getItem("userData")) ?? [];
 const userEmail = JSON.parse(sessionStorage.getItem("activeUser")) ?? null;
@@ -600,6 +604,8 @@ gameGrid.forEach(function (item) {
     card.appendChild(back);
 });
 
+// Vérifie la paire de cartes
+
 let match = function match() {
     let selected = document.querySelectorAll('.selected');
     selected.forEach(function (card) {
@@ -622,6 +628,8 @@ let match = function match() {
     }
 };
 
+// Réinitialise le tour de jeu
+
 let resetGuesses = function resetGuesses() {
     firstGuess = '';
     secondGuess = '';
@@ -633,6 +641,8 @@ let resetGuesses = function resetGuesses() {
         card.classList.remove('selected');
     });
 };
+
+// Logique de sélection de la paire
 
 grid.addEventListener('click', function (event) {
 
@@ -665,6 +675,8 @@ grid.addEventListener('click', function (event) {
         document.getElementById("nbCoups").innerText = nbCoups;
     }
 });
+
+// Logique de nouvelle partie
 
 document.addEventListener('keydown', function (event) {
     if (event.key === ' ' && nbPaires === nbPairesTrouvees) {

@@ -24,6 +24,8 @@ import {
     clearImg,
 } from './modules/imgDisplay.js';
 
+// Logique de l'inscription (event submit)
+
 function handleSubmit(event) {
     event.preventDefault();
 
@@ -118,6 +120,8 @@ function handleSubmit(event) {
 
 document.getElementById('userForm').addEventListener('submit', handleSubmit);
 
+// Logique du nettoyage (event reset)
+
 function clearAll() {
     clearFieldErrors();
     clearImg();
@@ -125,6 +129,8 @@ function clearAll() {
 }
 
 document.getElementById('userForm').addEventListener('reset', clearAll);
+
+// Logique vérification force mot de passe (event keyup)
 
 function strenghtCheck() {
     const password = document.getElementById('password').value;
