@@ -110,6 +110,7 @@ function handleSubmit(event) {
         return;
     }
 
+    formData.password = MD5.generate(formData.password);
     saveToLocalStorage(formData);
     alert('Inscription réussie !');
     location.href = 'connexion.html'

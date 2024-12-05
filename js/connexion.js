@@ -13,6 +13,7 @@ function handleSubmit(event) {
 
     let hasError = false;
 
+    formData.password = MD5.generate(formData.password);
     if (!matchValidator(formData.email, formData.password)) {
         alert('Erreur, veuillez saisir les informations correctement');
         hasError = true;
