@@ -1,9 +1,9 @@
 import { updateLocalStorage } from "./modules/storage.js";
 
 const users = JSON.parse(localStorage.getItem("userData")) ?? [];
-const userEmail = JSON.parse(sessionStorage.getItem("activeUser")) ?? [];
+const userEmail = JSON.parse(sessionStorage.getItem("activeUser")) ?? null;
 const user = users.find(user => user.email === userEmail) ?? [];
-const userName = user['name'] ?? [];
+const userName = user['name'] ?? null;
 document.getElementById('name').value = userName;
 document.getElementById('email').value = userEmail;
 document.getElementById('name').readOnly = true;
@@ -54,7 +54,7 @@ document.getElementById("choice").addEventListener('change', changeImg)
 function handleSubmit(event) {
     event.preventDefault();
 
-    if (!user) {
+    if (!userEmail) {
         alert("Vous n'êtes pas connecté");
         return;
     }
