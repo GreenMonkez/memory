@@ -15,3 +15,11 @@ export function updateLocalStorage(users, user) {
     users.push(user);
     localStorage.setItem('userData', JSON.stringify(users));
 }
+
+export function saveScoreToLocalStorage(scoreData) {
+
+    const scores = JSON.parse(localStorage.getItem('scoreData')) ?? []
+    scores.push(scoreData)
+
+    localStorage.setItem('scoreData', JSON.stringify(scores));
+}

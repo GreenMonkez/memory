@@ -1,3 +1,11 @@
+import {
+    saveScoreToLocalStorage
+} from './modules/storage.js'
+
+import {
+    getDate
+} from './modules/date.js'
+
 const legume = [{
     "name": "1",
     "img": "assets/memory-legume/1.svg"
@@ -486,6 +494,26 @@ const dinosauresAvecNom = [{
     "img": "assets/dinosauresAvecNom/10.jpg"
 }];
 
+const memorySize = {
+    "6": "4par3",
+    "8": "4par4",
+    "10": "5par4",
+    "15": "6par5",
+    "18": "6par6",
+    "21": "7par6"
+};
+
+const memoryName = {
+    "legume": "Légumes",
+    "alphabet": "Alphabet",
+    "animaux": "Animaux",
+    "animauxAnimes": "Animaux Animés",
+    "animauxDomestiques": "Animaux Domestiques",
+    "chiens": "Chiens",
+    "dinosaures": "Dinosaures",
+    "dinosauresAvecNom": "Dinosaures Avec Nom"
+};
+
 const users = JSON.parse(localStorage.getItem("userData")) ?? [];
 const userEmail = JSON.parse(sessionStorage.getItem("activeUser")) ?? null;
 const user = users.find(user => user.email === userEmail) ?? [];
@@ -527,7 +555,6 @@ gameGrid.forEach(function (item) {
     let name = item.name,
         img = item.img;
 
-
     let card = document.createElement('div');
     card.classList.add('card');
     card.dataset.name = name;
@@ -551,6 +578,17 @@ let match = function match() {
     });
     nbPairesTrouvees++;
     if (nbPaires === nbPairesTrouvees) {
+        if (userEmail) {
+            const date = getDate();
+            const scoreData = {
+                email: userEmail,
+                score: nbCoups,
+                size: memorySize[userSize] ?? '4par3',
+                choice: memoryName[userChoice] ?? 'Légumes',
+                date: date
+            };
+            saveScoreToLocalStorage(scoreData);
+        }
         alert('Bravo !');
     }
 };
