@@ -90,3 +90,33 @@ function handleSubmit(event) {
 }
 
 document.getElementById('userForm').addEventListener('submit', handleSubmit);
+
+const scores = JSON.parse(localStorage.getItem("scoreData")) ?? [];
+const userScores = scores.filter(user => user.email === userEmail) ?? [];
+userScores.sort((a, b) => a.score - b.score);
+
+
+function createTable() {
+
+    const headers = ["Pseudo", "Score", "Taille", "Choix Memory", "Date"];
+    const table = document.createElement("TABLE");
+
+    for (let i = 0; i < userScores.length; i++) {
+        const row = table.insertRow(i);
+        row.insertCell(0).innerHTML = userScores[i].email;
+        row.insertCell(1).innerHTML = userScores[i].score;
+        row.insertCell(2).innerHTML = userScores[i].size;
+        row.insertCell(3).innerHTML = userScores[i].choice;
+        row.insertCell(4).innerHTML = userScores[i].date;
+    }
+
+    const header = table.createTHead();
+    const headerRow = header.insertRow(0);
+    for (let i = 0; i < headers.length; i++) {
+        headerRow.insertCell(i).innerHTML = headers[i];
+    }
+
+    document.getElementById('table').append(table);
+}
+
+createTable();

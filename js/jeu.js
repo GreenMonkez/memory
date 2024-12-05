@@ -514,6 +514,35 @@ const memoryName = {
     "dinosauresAvecNom": "Dinosaures Avec Nom"
 };
 
+const scores = JSON.parse(localStorage.getItem("scoreData")) ?? [];
+scores.sort((a, b) => a.score - b.score);
+scores.splice(5, 99)
+
+function createTable() {
+
+    const headers = ["Pseudo", "Score", "Taille", "Choix Memory", "Date"];
+    const table = document.createElement("TABLE");
+
+    for (let i = 0; i < scores.length; i++) {
+        const row = table.insertRow(i);
+        row.insertCell(0).innerHTML = scores[i].email;
+        row.insertCell(1).innerHTML = scores[i].score;
+        row.insertCell(2).innerHTML = scores[i].size;
+        row.insertCell(3).innerHTML = scores[i].choice;
+        row.insertCell(4).innerHTML = scores[i].date;
+    }
+
+    const header = table.createTHead();
+    const headerRow = header.insertRow(0);
+    for (let i = 0; i < headers.length; i++) {
+        headerRow.insertCell(i).innerHTML = headers[i];
+    }
+
+    document.getElementById('table').append(table);
+}
+
+createTable();
+
 const users = JSON.parse(localStorage.getItem("userData")) ?? [];
 const userEmail = JSON.parse(sessionStorage.getItem("activeUser")) ?? null;
 const user = users.find(user => user.email === userEmail) ?? [];

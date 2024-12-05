@@ -65,11 +65,14 @@ body {
     transform: rotateY(180deg);
 }
 
-/* .match .front {
-    background: #555555 !important;
-} */
-
 .match {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
+}
+
+#table {
+    border: 1px solid;
+    text-align: center;
+    width: fit-content;
+    padding: 0 10px 0 10px;
 }
